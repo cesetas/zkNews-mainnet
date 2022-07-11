@@ -489,17 +489,17 @@ export default function Post({ post }) {
   };
 
   //This function is just for development. After deploymnet to mainnet it will be deleted
-  const deletePost = async () => {
-    try {
-      await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_LOC}api/posts/${postId}`, {
-        method: "Delete",
-      });
+  // const deletePost = async () => {
+  //   try {
+  //     await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_LOC}api/posts/${postId}`, {
+  //       method: "Delete",
+  //     });
 
-      router.push("/news");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     router.push("/news");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleLike = async (event: any) => {
     event.preventDefault();
@@ -530,10 +530,10 @@ export default function Post({ post }) {
     funds();
   };
 
-  const handleDelete = async (event: any) => {
-    event.preventDefault();
-    deletePost();
-  };
+  // const handleDelete = async (event: any) => {
+  //   event.preventDefault();
+  //   deletePost();
+  // };
 
   return (
     <div>
@@ -615,9 +615,9 @@ export default function Post({ post }) {
             </Button>
           )}
 
-          <Button onClick={handleDelete} size="small">
+          {/* <Button onClick={handleDelete} size="small">
             delete
-          </Button>
+          </Button> */}
         </Box>
         {!isStatusChanged ? (
           <></>
