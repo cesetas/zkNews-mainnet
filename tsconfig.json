@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+
+    "incremental": true
+  },
+  "include": [
+    "circomlibjs",
+    "test/sample-test.js",
+    "./node_modules/fastfile/src/fastfile.js",
+    "next-env.d.ts",
+    "scripts/deploy.js",
+    "test/test.js",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/utils/dbConnect.js",
+    "hardhat.config.js"
+  ],
+  "exclude": ["node_modules"]
+}
