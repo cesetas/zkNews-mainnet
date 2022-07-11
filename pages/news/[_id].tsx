@@ -390,8 +390,6 @@ export default function Post({ post }) {
     );
 
     const amount = String(parseFloat(withdrawAmount) * 10e17);
-    console.log(typeof amount);
-    console.log(amount);
 
     const provider = (await detectEthereumProvider()) as any;
     if (!provider) {
@@ -432,6 +430,7 @@ export default function Post({ post }) {
         {
           from: senderAccount,
           gasLimit: 1000000,
+          gasPrice: 40000000000,
         }
       );
       await tx3.wait();
