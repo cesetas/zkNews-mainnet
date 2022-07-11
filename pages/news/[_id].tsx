@@ -37,27 +37,11 @@ export default function Post({ post }) {
   const router = useRouter();
   const postId = post._id as string;
 
-  useEffect(() => {
-    fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ...post, likes: likes }),
-    });
-  }, [likes]);
+  // useEffect(() => {
 
-  useEffect(() => {
-    fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ...post, dislikes: dislikes }),
-    });
-  }, [dislikes]);
+  // }, [likes]);
+
+  // useEffect(() => {}, [dislikes]);
 
   type TypedArray =
     | Int8Array
@@ -189,6 +173,14 @@ export default function Post({ post }) {
         );
         const newLikes = numLikes.toString();
         setLikes(newLikes);
+        await fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...post, likes: likes }),
+        });
       } catch (error) {
         setIsLiking(false);
         console.log(error);
@@ -301,8 +293,15 @@ export default function Post({ post }) {
           utils.formatBytes32String(postId)
         );
         const newDislikes = numDislikes.toString();
-
         setDislikes(newDislikes);
+        await fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...post, dislikes: dislikes }),
+        });
       } catch (error) {
         setIsDisliking(false);
         console.log(error);
@@ -430,7 +429,7 @@ export default function Post({ post }) {
         {
           from: senderAccount,
           gasLimit: 1000000,
-          gasPrice: 40000000000,
+          gasPrice: 50000000000,
         }
       );
       await tx3.wait();
