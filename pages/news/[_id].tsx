@@ -429,10 +429,9 @@ export default function Post({ post }) {
         {
           from: senderAccount,
           gasLimit: 1000000,
-          gasPrice: 50000000000,
         }
       );
-      await tx3.wait();
+      // await tx3.wait();
     } catch (error) {
       setIsStatusChanged(true);
       setIdentityStatus(true);
