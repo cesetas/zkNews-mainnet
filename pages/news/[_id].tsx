@@ -157,7 +157,7 @@ export default function Post({ post }) {
           solidityProof,
           { from: senderAccount, gasLimit: 1000000 }
         );
-        await tx1.wait();
+        await tx1.wait(1);
       } catch (error) {
         setIsStatusChanged(true);
         setIdentityStatus(true);
@@ -172,14 +172,14 @@ export default function Post({ post }) {
           utils.formatBytes32String(postId)
         );
         const newLikes = numLikes.toString();
-        setLikes(newLikes);
+        await setLikes(newLikes);
         await fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...post, likes: likes }),
+          body: JSON.stringify({ likes: likes }),
         });
       } catch (error) {
         setIsLiking(false);
@@ -278,7 +278,7 @@ export default function Post({ post }) {
           solidityProof,
           { from: senderAccount, gasLimit: 1000000 }
         );
-        await tx2.wait();
+        await tx2.wait(1);
       } catch (error) {
         setIsStatusChanged(true);
         setIdentityStatus(true);
@@ -293,14 +293,14 @@ export default function Post({ post }) {
           utils.formatBytes32String(postId)
         );
         const newDislikes = numDislikes.toString();
-        setDislikes(newDislikes);
+        await setDislikes(newDislikes);
         await fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...post, dislikes: dislikes }),
+          body: JSON.stringify({ dislikes: dislikes }),
         });
       } catch (error) {
         setIsDisliking(false);
@@ -431,7 +431,7 @@ export default function Post({ post }) {
           gasLimit: 1000000,
         }
       );
-      // await tx3.wait();
+      await tx3.wait(1);
     } catch (error) {
       setIsStatusChanged(true);
       setIdentityStatus(true);
