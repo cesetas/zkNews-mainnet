@@ -108,7 +108,7 @@ export default function Post({ post }) {
     const identityCommitment = identity.genIdentityCommitment();
 
     const zkNewsContract = await new ethers.Contract(
-      process.env.NEXT_PUBLIC_TEST_CONTRACT_ADDRESS,
+      process.env.NEXT_PUBLIC_MAIN_CONTRACT_ADDRESS,
       abi.abi,
       signer
     );
@@ -222,7 +222,7 @@ export default function Post({ post }) {
     const identityCommitment = identity.genIdentityCommitment();
 
     const zkNewsContract = await new ethers.Contract(
-      process.env.NEXT_PUBLIC_TEST_CONTRACT_ADDRESS,
+      process.env.NEXT_PUBLIC_MAIN_CONTRACT_ADDRESS,
       abi.abi,
       signer
     );
@@ -340,7 +340,7 @@ export default function Post({ post }) {
     const senderAccount = await signer.getAddress();
 
     const zkNewsContract = await new ethers.Contract(
-      process.env.NEXT_PUBLIC_TEST_CONTRACT_ADDRESS,
+      process.env.NEXT_PUBLIC_MAIN_CONTRACT_ADDRESS,
       abi.abi,
       signer
     );
@@ -416,7 +416,7 @@ export default function Post({ post }) {
       );
 
       const zkNewsContract = await new ethers.Contract(
-        process.env.NEXT_PUBLIC_TEST_CONTRACT_ADDRESS,
+        process.env.NEXT_PUBLIC_MAIN_CONTRACT_ADDRESS,
         abi.abi,
         signer
       );
@@ -465,7 +465,7 @@ export default function Post({ post }) {
 
     try {
       const zkNewsContract = await new ethers.Contract(
-        process.env.NEXT_PUBLIC_TEST_CONTRACT_ADDRESS,
+        process.env.NEXT_PUBLIC_MAIN_CONTRACT_ADDRESS,
         abi.abi,
         signer
       );

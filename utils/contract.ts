@@ -3,9 +3,9 @@ import { AbiItem } from "web3-utils";
 import abi from "../abi/zkNews.json";
 
 const getContract = async () => {
-  const PTE_KEY = process.env.NEXT_PUBLIC_TEST_PRIVATE_KEY;
-  const URL = process.env.NEXT_PUBLIC_TEST_URL;
-  const contractAddress = process.env.NEXT_PUBLIC_TEST_CONTRACT_ADDRESS;
+  const PTE_KEY = process.env.NEXT_PUBLIC_MAIN_PRIVATE_KEY;
+  const URL = process.env.NEXT_PUBLIC_MAIN_URL;
+  const contractAddress = process.env.NEXT_PUBLIC_MAIN_CONTRACT_ADDRESS;
 
   const web3 = new Web3(URL as string);
   web3.eth.handleRevert = true; // return custom error messages from contract

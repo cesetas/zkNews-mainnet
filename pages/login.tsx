@@ -43,7 +43,7 @@ const Login = () => {
 
     // const { zkNewsContract, account } = await getContract();
     const zkNewsContract = await new ethers.Contract(
-      process.env.NEXT_PUBLIC_TEST_CONTRACT_ADDRESS,
+      process.env.NEXT_PUBLIC_MAIN_CONTRACT_ADDRESS,
       abi.abi,
       signer
     );
