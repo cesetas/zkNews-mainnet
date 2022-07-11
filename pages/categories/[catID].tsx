@@ -103,7 +103,7 @@ export default function news({ posts }) {
 }
 
 news.getInitialProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_LOC}api/posts`);
+  const res = await fetch("https://zknews.vercel.app/api/posts");
   const { data } = await res.json();
 
   return { posts: data as any };

@@ -106,7 +106,6 @@ function PostNews() {
     let currentIdentityCommitments: any = [];
 
     try {
-      // const { zkNewsContract, account } = await getContract();
       const zkNewsContract = await new ethers.Contract(
         process.env.NEXT_PUBLIC_MAIN_CONTRACT_ADDRESS,
         abi.abi,
@@ -134,17 +133,14 @@ function PostNews() {
       setStatus("You should complete the registration process before posting.");
       return;
     } else {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_DOMAIN_LOC}api/posts`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
+      const res = await fetch("https://zknews.vercel.app/api/posts", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
       const data = await res.json();
       const postId = data.data._id;
@@ -215,7 +211,7 @@ function PostNews() {
 
   const deletePost = async (_id) => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_LOC}api/posts/${_id}`, {
+      await fetch(`https://zknews.vercel.app/api/posts/${_id}`, {
         method: "Delete",
       });
     } catch (error) {

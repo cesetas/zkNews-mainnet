@@ -38,7 +38,7 @@ export default function Post({ post }) {
   const postId = post._id as string;
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_DOMAIN_LOC}api/posts/${postId}`, {
+    fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -49,7 +49,7 @@ export default function Post({ post }) {
   }, [likes]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_DOMAIN_LOC}api/posts/${postId}`, {
+    fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -187,7 +187,8 @@ export default function Post({ post }) {
         let numLikes = await zkNewsContract.getPostLikes(
           utils.formatBytes32String(postId)
         );
-        setLikes(numLikes.toString());
+        const newLikes = numLikes.toString();
+        setLikes(newLikes);
       } catch (error) {
         setIsLiking(false);
         console.log(error);
@@ -283,7 +284,7 @@ export default function Post({ post }) {
           publicSignals.nullifierHash,
           publicSignals.externalNullifier,
           solidityProof,
-          { from: senderAccount, gasLimit: 1000000, gasPrice: 40000000000 }
+          { from: senderAccount, gasLimit: 1000000 }
         );
         await tx2.wait();
       } catch (error) {
@@ -299,8 +300,9 @@ export default function Post({ post }) {
         let numDislikes = await zkNewsContract.getPostDislikes(
           utils.formatBytes32String(postId)
         );
+        const newDislikes = numDislikes.toString();
 
-        setDislikes(numDislikes.toString());
+        setDislikes(newDislikes);
       } catch (error) {
         setIsDisliking(false);
         console.log(error);
@@ -350,8 +352,7 @@ export default function Post({ post }) {
         utils.formatBytes32String(postId),
         {
           from: senderAccount,
-          gasLimit: 600000,
-          gasPrice: 40000000000,
+          gasLimit: 1000000,
           value: ethers.utils.parseUnits(amount, "ether"),
         }
       );
@@ -361,6 +362,7 @@ export default function Post({ post }) {
       setIdentityStatus(true);
       setIsFunding(false);
       setStatus("Post has not funded!");
+      setFundAmount("");
       console.log(error);
       return;
     }
@@ -428,7 +430,6 @@ export default function Post({ post }) {
         {
           from: senderAccount,
           gasLimit: 1000000,
-          gasPrice: 40000000000,
         }
       );
       await tx3.wait();
@@ -805,9 +806,7 @@ export default function Post({ post }) {
 }
 
 Post.getInitialProps = async ({ query: { _id } }) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_DOMAIN_LOC}api/posts/${_id}`
-  );
+  const res = await fetch(`https://zknews.vercel.app/api/posts/${_id}`);
   const { data } = await res.json();
 
   return { post: data };
