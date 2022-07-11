@@ -9,6 +9,7 @@ import Link from "next/link";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { useRouter } from "next/router";
+import dateFormat from "dateformat";
 
 export default function news({ posts }) {
   const { catID } = useRouter().query as any;
@@ -46,8 +47,8 @@ export default function news({ posts }) {
                     sx={{
                       minWidth: 300,
                       maxWidth: 600,
-                      minHeight: 625,
-                      maxHeight: 625,
+                      minHeight: 550,
+                      maxHeight: 550,
                     }}
                   >
                     <CardMedia
@@ -64,12 +65,15 @@ export default function news({ posts }) {
                         {filteredPost.title}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        {filteredPost.news}
+                        {filteredPost.news.slice(0, 150)}...
                       </Typography>
+                      <br />
+                      <div className="flex items-end"></div>
+                      {dateFormat(filteredPost.createdAt, "mmmm dS, yyyy")}
                     </CardContent>
                     <CardActions>
                       <Link href={`/news/${filteredPost._id}`}>
-                        <Button size="small">Go to the details...</Button>
+                        <Button size="small">Go into details...</Button>
                       </Link>
                     </CardActions>
                   </Card>
