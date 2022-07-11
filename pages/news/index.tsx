@@ -30,8 +30,8 @@ export default function news({ posts }) {
                     sx={{
                       minWidth: 300,
                       maxWidth: 600,
-                      minHeight: 800,
-                      maxHeight: 800,
+                      minHeight: 625,
+                      maxHeight: 625,
                     }}
                   >
                     <CardMedia

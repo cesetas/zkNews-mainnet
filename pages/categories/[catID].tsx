@@ -28,7 +28,7 @@ export default function news({ posts }) {
         <Grid
           container
           spacing={{ xs: 1, sm: 2, md: 4 }}
-          columns={{ xs: 1, sm: 1, md: 1, lg: 2, xl: 2 }}
+          columns={{ xs: 1, sm: 1, md: 2, lg: 3, xl: 3 }}
         >
           {filteredPost.map((filteredPost: any) => {
             return (
@@ -44,15 +44,18 @@ export default function news({ posts }) {
                 <Link href={`/news/${filteredPost._id}`}>
                   <Card
                     sx={{
-                      minWidth: 500,
-                      maxWidth: 800,
-                      minHeight: 300,
-                      maxHeight: 800,
+                      minWidth: 300,
+                      maxWidth: 600,
+                      minHeight: 625,
+                      maxHeight: 625,
                     }}
                   >
                     <CardMedia
                       component="img"
-                      max-height="10px"
+                      sx={{
+                        maxHeight: "250px",
+                        minHeight: "200px",
+                      }}
                       image={filteredPost.photoURL}
                       alt={filteredPost.location}
                     />

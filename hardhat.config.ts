@@ -8,30 +8,6 @@ import "./tasks/deploy";
 
 dotenv.config({ path: ".env.local" });
 
-// const config: HardhatUserConfig = {
-//   solidity: "0.8.7",
-//   networks: {
-//     localhost: {
-//       url: process.env.NEXT_PUBLIC_LOC_URL,
-//       accounts: [process.env.NEXT_PUBLIC_LOC_PRIVATE_KEY],
-//     },
-//     testnet: {
-//       url: process.env.NEXT_PUBLIC_TEST_URL,
-//       accounts: [process.env.NEXT_PUBLIC_TEST_PRIVATE_KEY],
-//     },
-//     // mainnet: {
-//     //   url: process.env.NEXT_PUBLIC_MAIN_URL,
-//     //   accounts: [process.env.NEXT_PUBLIC__PRIVATE_KEY],
-//     // },
-//   },
-//   gasReporter: {
-//     enabled: process.env.REPORT_GAS !== undefined,
-//     currency: "USD",
-//   },
-// };
-
-// export default config;
-
 module.exports = {
   defaultNetwork: "matic",
   networks: {
@@ -39,6 +15,10 @@ module.exports = {
     matic: {
       url: process.env.NEXT_PUBLIC_TEST_URL,
       accounts: [process.env.NEXT_PUBLIC_TEST_PRIVATE_KEY],
+    },
+    mainnet: {
+      url: process.env.NEXT_PUBLIC_MAIN_URL,
+      accounts: [process.env.NEXT_PUBLIC_MAIN_PRIVATE_KEY],
     },
   },
   etherscan: {
