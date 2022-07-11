@@ -390,6 +390,8 @@ export default function Post({ post }) {
     );
 
     const amount = String(parseFloat(withdrawAmount) * 10e17);
+    console.log(typeof amount);
+    console.log(amount);
 
     const provider = (await detectEthereumProvider()) as any;
     if (!provider) {
