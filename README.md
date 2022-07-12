@@ -2,7 +2,7 @@
 
 This project on which news and articles are published by its registered members, aims at giving users confidence to submit and to follow the news as anonymously by help of Semaphore and ZKP in order to serve freedom of speech within a secure platform. There is also a reward mechanism which supports the survival of the system. And all users are able to encourage members publisihing on the system to do their job better.
 
-- [Demo video](https://github.com/privacy-scaling-explorations/zk-kit)
+- [Demo video](https://youtu.be/kfH1XNY4EN8)
 - [Testnet site](https://zknews-testnet.vercel.app/)
 - [Mainnet site](https://zknews.vercel.app/)
 
