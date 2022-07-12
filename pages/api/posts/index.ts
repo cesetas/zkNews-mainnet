@@ -1,5 +1,5 @@
 import dbConnect from "../../../utils/dbConnect";
-import Post from "../../../models/Post";
+import NewPost from "../../../models/NewPost";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 dbConnect();
@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case "GET":
       try {
-        const posts = await Post.find({});
+        const posts = await NewPost.find({});
 
         res.status(200).json({ success: true, data: posts });
       } catch (error) {
@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     case "POST":
       try {
-        const post = await Post.create(req.body);
+        const post = await NewPost.create(req.body);
 
         res.status(201).json({ success: true, data: post });
       } catch (error) {

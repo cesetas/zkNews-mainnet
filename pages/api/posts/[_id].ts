@@ -1,5 +1,5 @@
 import dbConnect from "../../../utils/dbConnect";
-import Post from "../../../models/Post";
+import NewPost from "../../../models/NewPost";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 dbConnect();
@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case "GET":
       try {
-        const post = await Post.findById(_id);
+        const post = await NewPost.findById(_id);
 
         if (!post) {
           return res.status(400).json({ success: false });
@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       break;
     case "PUT":
       try {
-        const post = await Post.findByIdAndUpdate(_id, req.body, {
+        const post = await NewPost.findByIdAndUpdate(_id, req.body, {
           new: true,
           runValidators: true,
         });
@@ -42,7 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       break;
     case "DELETE":
       try {
-        const deletedPost = await Post.deleteOne({ _id: _id });
+        const deletedPost = await NewPost.deleteOne({ _id: _id });
 
         if (!deletedPost) {
           return res.status(400).json({ success: false });
