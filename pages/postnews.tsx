@@ -343,7 +343,7 @@ function PostNews() {
                   <TextField
                     fullWidth
                     required
-                    type="password"
+                    type="number"
                     id="commitment"
                     name="commitment"
                     label="Ownership Commitment"

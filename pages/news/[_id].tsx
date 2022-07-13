@@ -645,7 +645,7 @@ export default function Post({ post }) {
                 pl: 4,
                 pr: 4,
                 mt: 1,
-                width: "127%",
+                width: "100%",
               }}
             >
               <Alert severity={identityStatus ? "error" : "success"}>
@@ -661,7 +661,7 @@ export default function Post({ post }) {
             pl: 4,
             pr: 4,
             mt: 1,
-            width: "127%",
+            width: "100%",
           }}
         >
           <Box sx={{ flexGrow: 1 }}>
