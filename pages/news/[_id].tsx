@@ -37,11 +37,27 @@ export default function Post({ post }) {
   const router = useRouter();
   const postId = post._id as string;
 
-  // useEffect(() => {
+  useEffect(() => {
+    fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...post, likes: likes }),
+    });
+  }, [likes]);
 
-  // }, [likes]);
-
-  // useEffect(() => {}, [dislikes]);
+  useEffect(() => {
+    fetch(`https://zknews.vercel.app/api/posts/${postId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...post, dislikes: dislikes }),
+    });
+  }, [dislikes]);
 
   type TypedArray =
     | Int8Array
@@ -179,7 +195,7 @@ export default function Post({ post }) {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ likes: likes }),
+          body: JSON.stringify({ ...post, likes: likes }),
         });
       } catch (error) {
         setIsLiking(false);
@@ -300,7 +316,7 @@ export default function Post({ post }) {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ dislikes: dislikes }),
+          body: JSON.stringify({ ...post, dislikes: dislikes }),
         });
       } catch (error) {
         setIsDisliking(false);
